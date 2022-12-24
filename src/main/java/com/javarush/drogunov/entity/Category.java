@@ -3,6 +3,7 @@ package com.javarush.drogunov.entity;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,16 @@ public class Category {
     private Integer categoryId;
     @Column(name = "name")
     private String name;
+    @ManyToMany
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id")
+    )
+    private List<Film> films;
+
     @Column(name = "last_update")
+    @Basic(fetch = FetchType.EAGER)
     private Timestamp lastUpdate;
 
     public Integer getCategoryId() {
@@ -23,6 +33,14 @@ public class Category {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 
     public String getName() {

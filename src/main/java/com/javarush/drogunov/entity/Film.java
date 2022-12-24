@@ -1,9 +1,12 @@
 package com.javarush.drogunov.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,31 +16,40 @@ public class Film {
     @Id
     @Column(name = "film_id")
     private Integer filmId;
-    @Basic
+    
     @Column(name = "title")
     private String title;
-    @Basic
+
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    )
+    private List<Category> categories;
+    
     @Column(name = "description")
     private String description;
-    @Basic
+    
     @Column(name = "release_year")
     private Integer releaseYear;
-    @Basic
+    
     @Column(name = "language_id")
     private Integer languageId;
-    @Basic
+    
     @Column(name = "original_language_id")
     private Integer originalLanguageId;
-    @Basic
+    
     @Column(name = "rental_duration")
     private Integer rentalDuration;
-    @Basic
+    
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
-    @Basic
+    
     @Column(name = "length")
     private Integer length;
-    @Basic
+    
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
 
@@ -47,6 +59,9 @@ public class Film {
     //TODO Set
     @Column(name = "special_features")
     private String specialFeatures;
+
+    @Column(name = "last_update")
+    private Timestamp lastUpdate;
 
     @Override
     public String toString() {
@@ -67,9 +82,13 @@ public class Film {
                 '}';
     }
 
-    @Basic
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public Integer getFilmId() {
         return filmId;

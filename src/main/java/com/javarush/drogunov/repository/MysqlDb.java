@@ -16,7 +16,9 @@ public class MysqlDb implements Repository {
     public MysqlDb() {
         Properties properties = new Properties();
         properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
+//        properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
         properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+//        properties.put(Environment.URL, "jdbc:mysql://localhost:3306/film");
         properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/film");
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "root");
@@ -31,7 +33,6 @@ public class MysqlDb implements Repository {
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Film.class)
                 .addAnnotatedClass(FilmActor.class)
-                .addAnnotatedClass(FilmCategory.class)
                 .addAnnotatedClass(FilmText.class)
                 .addAnnotatedClass(Inventory.class)
                 .addAnnotatedClass(Language.class)

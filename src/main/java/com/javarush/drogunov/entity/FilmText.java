@@ -7,21 +7,26 @@ import java.util.Objects;
 @Entity
 @Table(name = "film_text", schema = "film")
 public class FilmText {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column(name = "film_id")
-    private Short filmId;
+    private Integer id;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "film_id")
+    private Film film;
+
     @Column(name = "title")
     private String title;
     @Column(name = "description")
     private String description;
-
-    public Short getFilmId() {
-        return filmId;
+    public Film getFilm() {
+        return film;
     }
 
-    public void setFilmId(Short filmId) {
-        this.filmId = filmId;
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
     public String getTitle() {
@@ -40,10 +45,18 @@ public class FilmText {
         this.description = description;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "FilmText{" +
-                "filmId=" + filmId +
+                "film=" + film +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
@@ -54,11 +67,11 @@ public class FilmText {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FilmText filmText = (FilmText) o;
-        return Objects.equals(filmId, filmText.filmId) && Objects.equals(title, filmText.title) && Objects.equals(description, filmText.description);
+        return Objects.equals(film, filmText.film) && Objects.equals(title, filmText.title) && Objects.equals(description, filmText.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(filmId, title, description);
+        return Objects.hash(film, title, description);
     }
 }
