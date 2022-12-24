@@ -32,7 +32,3 @@
 /.idea/dataSources/66fbd03b-fd30-4b38-8dd4-154ff6869121/storage_v2/_src_/schema/sys.zb4BAA.meta
 .gitignore
 /.idea/shelf/Changes.xml
-/target/project-hibernate-2-1.0-SNAPSHOT.jar
-/target
-.idea
-/spy.log
