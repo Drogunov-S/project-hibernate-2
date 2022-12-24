@@ -6,27 +6,28 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "rental")
 public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "rental_id")
     private Integer rentalId;
-    @Basic
+    
     @Column(name = "rental_date")
     private Timestamp rentalDate;
-    @Basic
+    
     @Column(name = "inventory_id")
     private Integer inventoryId;
-    @Basic
+    
     @Column(name = "customer_id")
     private Integer customerId;
-    @Basic
+    
     @Column(name = "return_date")
     private Timestamp returnDate;
-    @Basic
+    
     @Column(name = "staff_id")
     private Integer staffId;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -84,6 +85,19 @@ public class Rental {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Rental{" +
+                "rentalId=" + rentalId +
+                ", rentalDate=" + rentalDate +
+                ", inventoryId=" + inventoryId +
+                ", customerId=" + customerId +
+                ", returnDate=" + returnDate +
+                ", staffId=" + staffId +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

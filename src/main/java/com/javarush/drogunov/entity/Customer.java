@@ -1,38 +1,41 @@
 package com.javarush.drogunov.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
 
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "customer_id")
     private Integer customerId;
-    @Basic
+    
     @Column(name = "store_id")
     private Integer storeId;
-    @Basic
+    
     @Column(name = "first_name")
     private String firstName;
-    @Basic
+    
     @Column(name = "last_name")
     private String lastName;
-    @Basic
+    
     @Column(name = "email")
     private String email;
-    @Basic
+    
     @Column(name = "address_id")
     private Integer addressId;
-    @Basic
+    
     @Column(name = "active")
-    private Byte active;
-    @Basic
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean active;
+    
     @Column(name = "create_date")
     private Timestamp createDate;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -84,11 +87,11 @@ public class Customer {
         this.addressId = addressId;
     }
 
-    public Byte getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(Byte active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
@@ -106,6 +109,21 @@ public class Customer {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", storeId=" + storeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", addressId=" + addressId +
+                ", active=" + active +
+                ", createDate=" + createDate +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

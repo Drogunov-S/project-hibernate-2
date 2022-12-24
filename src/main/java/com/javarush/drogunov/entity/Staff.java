@@ -7,39 +7,40 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
+@Table(name = "staff")
 public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "staff_id")
     private Integer staffId;
-    @Basic
+    
     @Column(name = "first_name")
     private String firstName;
-    @Basic
+    
     @Column(name = "last_name")
     private String lastName;
-    @Basic
+    
     @Column(name = "address_id")
     private Integer addressId;
-    @Basic
+    
     @Column(name = "picture")
     private byte[] picture;
-    @Basic
+    
     @Column(name = "email")
     private String email;
-    @Basic
+    
     @Column(name = "store_id")
     private Integer storeId;
-    @Basic
+    
     @Column(name = "active")
     private Byte active;
-    @Basic
+    
     @Column(name = "username")
     private String username;
-    @Basic
+    
     @Column(name = "password")
     private String password;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -129,6 +130,23 @@ public class Staff {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addressId=" + addressId +
+                ", picture=" + Arrays.toString(picture) +
+                ", email='" + email + '\'' +
+                ", storeId=" + storeId +
+                ", active=" + active +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

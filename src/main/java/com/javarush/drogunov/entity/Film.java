@@ -40,12 +40,33 @@ public class Film {
     @Basic
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
-    @Basic
+
     @Column(name = "rating")
+    @Convert(converter = RatingAttributeConverter.class)
     private Rating rating;
     //TODO Set
     @Column(name = "special_features")
     private String specialFeatures;
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", languageId=" + languageId +
+                ", originalLanguageId=" + originalLanguageId +
+                ", rentalDuration=" + rentalDuration +
+                ", rentalRate=" + rentalRate +
+                ", length=" + length +
+                ", replacementCost=" + replacementCost +
+                ", rating=" + rating +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
+
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -130,11 +151,11 @@ public class Film {
         this.replacementCost = replacementCost;
     }
 
-    public Integer getRating() {
+    public Rating getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Rating rating) {
         this.rating = rating;
     }
 

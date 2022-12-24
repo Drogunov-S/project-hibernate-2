@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "address")
 public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -95,6 +96,20 @@ public class Address {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", district='" + district + '\'' +
+                ", cityId=" + cityId +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

@@ -6,15 +6,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "country")
 public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "country_id")
     private Integer countryId;
-    @Basic
     @Column(name = "country")
     private String country;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -40,6 +39,15 @@ public class Country {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "countryId=" + countryId +
+                ", country='" + country + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

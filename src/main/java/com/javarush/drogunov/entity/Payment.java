@@ -6,27 +6,28 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "payment")
 public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "payment_id")
     private Integer paymentId;
-    @Basic
+    
     @Column(name = "customer_id")
     private Integer customerId;
-    @Basic
+    
     @Column(name = "staff_id")
     private Integer staffId;
-    @Basic
+    
     @Column(name = "rental_id")
     private Integer rentalId;
-    @Basic
+    
     @Column(name = "amount")
     private BigDecimal amount;
-    @Basic
+    
     @Column(name = "payment_date")
     private Timestamp paymentDate;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -84,6 +85,19 @@ public class Payment {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", customerId=" + customerId +
+                ", staffId=" + staffId +
+                ", rentalId=" + rentalId +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

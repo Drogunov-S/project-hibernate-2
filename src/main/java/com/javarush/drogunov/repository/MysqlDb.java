@@ -1,6 +1,6 @@
 package com.javarush.drogunov.repository;
 
-import com.javarush.drogunov.entity.Film;
+import com.javarush.drogunov.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -23,7 +23,22 @@ public class MysqlDb implements Repository {
 
         sessionFactory = new Configuration()
                 .addProperties(properties)
+                .addAnnotatedClass(Actor.class)
+                .addAnnotatedClass(Address.class)
+                .addAnnotatedClass(Category.class)
+                .addAnnotatedClass(City.class)
+                .addAnnotatedClass(Country.class)
+                .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Film.class)
+                .addAnnotatedClass(FilmActor.class)
+                .addAnnotatedClass(FilmCategory.class)
+                .addAnnotatedClass(FilmText.class)
+                .addAnnotatedClass(Inventory.class)
+                .addAnnotatedClass(Language.class)
+                .addAnnotatedClass(Payment.class)
+                .addAnnotatedClass(Rental.class)
+                .addAnnotatedClass(Staff.class)
+                .addAnnotatedClass(Store.class)
                 .buildSessionFactory();
         MYSQL_DB = this;
     }

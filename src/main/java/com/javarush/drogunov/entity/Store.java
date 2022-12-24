@@ -6,18 +6,19 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "store")
 public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "store_id")
     private Integer storeId;
-    @Basic
+    
     @Column(name = "manager_staff_id")
     private Integer managerStaffId;
-    @Basic
+    
     @Column(name = "address_id")
     private Integer addressId;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -51,6 +52,16 @@ public class Store {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "storeId=" + storeId +
+                ", managerStaffId=" + managerStaffId +
+                ", addressId=" + addressId +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

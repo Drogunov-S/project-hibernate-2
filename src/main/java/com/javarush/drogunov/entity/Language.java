@@ -5,15 +5,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "language")
 public class Language {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "language_id")
     private Integer languageId;
-    @Basic
     @Column(name = "name")
     private String name;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -39,6 +38,15 @@ public class Language {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Language{" +
+                "languageId=" + languageId +
+                ", name='" + name + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override

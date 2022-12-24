@@ -5,16 +5,14 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "film_text", schema = "film", catalog = "")
+@Table(name = "film_text", schema = "film")
 public class FilmText {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "film_id")
     private Short filmId;
-    @Basic
     @Column(name = "title")
     private String title;
-    @Basic
     @Column(name = "description")
     private String description;
 
@@ -40,6 +38,15 @@ public class FilmText {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmText{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
     @Override

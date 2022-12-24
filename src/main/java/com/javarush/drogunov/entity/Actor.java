@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Table(name = "actor")
 public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -64,5 +65,15 @@ public class Actor {
     @Override
     public int hashCode() {
         return Objects.hash(actorId, firstName, lastName, lastUpdate);
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "actorId=" + actorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 }

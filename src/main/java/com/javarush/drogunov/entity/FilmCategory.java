@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "film_category", schema = "film", catalog = "")
+@Table(name = "film_category", schema = "film")
 @IdClass(FilmCategoryPK.class)
 public class FilmCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +43,15 @@ public class FilmCategory {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmCategory{" +
+                "filmId=" + filmId +
+                ", categoryId=" + categoryId +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 
     @Override
