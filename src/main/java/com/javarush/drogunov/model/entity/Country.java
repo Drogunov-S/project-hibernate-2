@@ -1,4 +1,4 @@
-package com.javarush.drogunov.entity;
+package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 
@@ -6,35 +6,18 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "city")
-public class City {
+@Table(name = "country")
+public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "city_id")
-    private Integer cityId;
-    @Column(name = "city")
-    private String city;
     @Column(name = "country_id")
     private Integer countryId;
-    @Basic
+    @Column(name = "country")
+    private String country;
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Integer getCityId() {
-        return cityId;
-    }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public Integer getCountryId() {
         return countryId;
@@ -42,6 +25,14 @@ public class City {
 
     public void setCountryId(Integer countryId) {
         this.countryId = countryId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Timestamp getLastUpdate() {
@@ -54,10 +45,9 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "cityId=" + cityId +
-                ", city='" + city + '\'' +
-                ", countryId=" + countryId +
+        return "Country{" +
+                "countryId=" + countryId +
+                ", country='" + country + '\'' +
                 ", lastUpdate=" + lastUpdate +
                 '}';
     }
@@ -66,12 +56,12 @@ public class City {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        City city1 = (City) o;
-        return Objects.equals(cityId, city1.cityId) && Objects.equals(city, city1.city) && Objects.equals(countryId, city1.countryId) && Objects.equals(lastUpdate, city1.lastUpdate);
+        Country country1 = (Country) o;
+        return Objects.equals(countryId, country1.countryId) && Objects.equals(country, country1.country) && Objects.equals(lastUpdate, country1.lastUpdate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cityId, city, countryId, lastUpdate);
+        return Objects.hash(countryId, country, lastUpdate);
     }
 }

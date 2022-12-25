@@ -1,8 +1,9 @@
-package com.javarush.drogunov.entity;
+package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,13 +13,21 @@ public class Actor {
     @Id
     @Column(name = "actor_id")
     private Integer actorId;
-    @Basic
+    
     @Column(name = "first_name")
     private String firstName;
-    @Basic
+
+    @ManyToMany
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id")
+    )
+    private List<Film> films;
+
     @Column(name = "last_name")
     private String lastName;
-    @Basic
+    
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
@@ -75,5 +84,13 @@ public class Actor {
                 ", lastName='" + lastName + '\'' +
                 ", lastUpdate=" + lastUpdate +
                 '}';
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 }

@@ -1,4 +1,4 @@
-package com.javarush.drogunov.entity;
+package com.javarush.drogunov.model.entity;
 
 public enum Rating {
     G("G"),

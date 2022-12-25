@@ -1,6 +1,7 @@
-package com.javarush.drogunov.repository;
+package com.javarush.drogunov.repository.mysql;
 
-import com.javarush.drogunov.entity.*;
+import com.javarush.drogunov.model.entity.*;
+import com.javarush.drogunov.repository.Repository;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -32,7 +33,6 @@ public class MysqlDb implements Repository {
                 .addAnnotatedClass(Country.class)
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Film.class)
-                .addAnnotatedClass(FilmActor.class)
                 .addAnnotatedClass(FilmText.class)
                 .addAnnotatedClass(Inventory.class)
                 .addAnnotatedClass(Language.class)
@@ -50,4 +50,5 @@ public class MysqlDb implements Repository {
         }
         return MYSQL_DB.sessionFactory;
     }
+
 }

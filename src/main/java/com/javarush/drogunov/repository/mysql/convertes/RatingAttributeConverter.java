@@ -1,7 +1,7 @@
-package com.javarush.drogunov.entity;
+package com.javarush.drogunov.repository.mysql.convertes;
 
+import com.javarush.drogunov.model.entity.Rating;
 import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Converter;
 
 import java.util.Objects;
