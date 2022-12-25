@@ -18,11 +18,11 @@ public class Store {
     @Column(name = "store_id")
     private Integer id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manager_staff_id")
     private Staff staff;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
 
