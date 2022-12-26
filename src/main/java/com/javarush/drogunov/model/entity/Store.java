@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "store")
@@ -18,11 +17,11 @@ public class Store {
     @Column(name = "store_id")
     private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "manager_staff_id")
     private Staff staff;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
 

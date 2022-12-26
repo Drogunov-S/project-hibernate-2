@@ -1,9 +1,11 @@
 package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.sql.Timestamp;
 import java.util.Objects;
-
+@Data
 @Entity
 @Table(name = "language")
 public class Language {
@@ -15,50 +17,4 @@ public class Language {
     private String name;
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-
-    public Integer getLanguageId() {
-        return languageId;
-    }
-
-    public void setLanguageId(Integer languageId) {
-        this.languageId = languageId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public String toString() {
-        return "Language{" +
-                "languageId=" + languageId +
-                ", name='" + name + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Language language = (Language) o;
-        return Objects.equals(languageId, language.languageId) && Objects.equals(name, language.name) && Objects.equals(lastUpdate, language.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(languageId, name, lastUpdate);
-    }
 }

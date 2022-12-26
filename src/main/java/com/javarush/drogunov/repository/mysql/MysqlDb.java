@@ -19,8 +19,8 @@ public class MysqlDb implements Repository {
         properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
 //        properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
         properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-//        properties.put(Environment.URL, "jdbc:mysql://localhost:3306/film");
-        properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/film");
+//        properties.put(Environment.URL, "jdbc:mysql://localhost:3306/movie");
+        properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/movie");
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "root");
 
@@ -49,6 +49,10 @@ public class MysqlDb implements Repository {
             new MysqlDb();
         }
         return MYSQL_DB.sessionFactory;
+    }
+
+    public void close() {
+        sessionFactory.close();
     }
 
 }

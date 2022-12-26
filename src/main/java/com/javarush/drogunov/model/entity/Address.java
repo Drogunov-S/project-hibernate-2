@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.Objects;
-@NoArgsConstructor
 @Data
-@EqualsAndHashCode
 @Entity
 @Table(name = "address")
 public class Address {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
     private Integer id;
     

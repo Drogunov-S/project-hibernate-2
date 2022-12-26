@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Data
-@EqualsAndHashCode
 @Entity
 @Table(name = "city")
 public class City {
@@ -23,8 +21,7 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     private Country country;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-
+    
 }

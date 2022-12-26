@@ -9,9 +9,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Data
-@EqualsAndHashCode
 @Entity
 @Table(name = "inventory")
 public class Inventory {

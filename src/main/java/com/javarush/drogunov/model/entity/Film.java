@@ -3,16 +3,13 @@ package com.javarush.drogunov.model.entity;
 import com.javarush.drogunov.repository.mysql.convertes.RatingAttributeConverter;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode
 @Entity
 @Table(name = "film")
 public class Film {
@@ -74,5 +71,25 @@ public class Film {
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-
+    
+    @Override
+    public String toString() {
+        return "Film{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", categories=" + categories.size() +
+                ", actors=" + actors.size() +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", language=" + language +
+                ", originalLanguageId=" + originalLanguageId +
+                ", rentalDuration=" + rentalDuration +
+                ", rentalRate=" + rentalRate +
+                ", length=" + length +
+                ", replacementCost=" + replacementCost +
+                ", rating=" + rating +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }
