@@ -2,37 +2,42 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "rental")
 public class Rental {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rental_id")
     private Integer id;
     
     @Column(name = "rental_date")
-    private Timestamp rentalDate;
+    @CreationTimestamp
+    private LocalDateTime rentalDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
     
     @Column(name = "return_date")
-    private Timestamp returnDate;
+    private LocalDateTime returnDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "staff_id")
     private Staff staff;
     
     @Column(name = "last_update")
+    @UpdateTimestamp
     private Timestamp lastUpdate;
 
 }

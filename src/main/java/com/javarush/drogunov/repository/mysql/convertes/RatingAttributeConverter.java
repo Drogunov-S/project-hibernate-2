@@ -15,7 +15,7 @@ public class RatingAttributeConverter implements AttributeConverter<Rating, Stri
         }
         return attribute.getCode();
     }
-
+    
     @Override
     public Rating convertToEntityAttribute(String dbData) {
         if (Objects.isNull(dbData)) {

@@ -2,11 +2,9 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Data
 @Entity
@@ -15,13 +13,13 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "city_id")
-    private Integer Id;
+    private Short Id;
     @Column(name = "city")
-    private String city;
+    private String name;
     @ManyToOne
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     private Country country;
     @Column(name = "last_update")
+    @UpdateTimestamp
     private Timestamp lastUpdate;
-    
 }

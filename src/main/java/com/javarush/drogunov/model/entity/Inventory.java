@@ -2,30 +2,25 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Objects;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "inventory")
 public class Inventory {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "inventory_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "inventory_id", columnDefinition = "mediumint unsigned") //MEDIUMINT [UNSIGNED]
     private Integer Id;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "film_id")
     private Film film;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
-
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
+    @Column(name = "last_update", columnDefinition = "timestamp")
+    @UpdateTimestamp
+    private LocalDateTime lastUpdate;
 }

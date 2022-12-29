@@ -2,19 +2,21 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Timestamp;
-import java.util.Objects;
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "language")
 public class Language {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "language_id")
-    private Integer languageId;
-    @Column(name = "name")
+    @Column(name = "language_id", columnDefinition = "tinyint unsigned")
+    private Byte languageId;
+    @Column(name = "name", columnDefinition = "char(20)")
     private String name;
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
+    @Column(name = "last_update", columnDefinition = "timestamp")
+    @UpdateTimestamp
+    private LocalDate lastUpdate;
 }

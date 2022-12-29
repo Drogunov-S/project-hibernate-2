@@ -2,8 +2,9 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -12,10 +13,13 @@ import java.util.List;
 public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @Column(name = "category_id", columnDefinition = "tinyint")
+    private Integer id;
     @Column(name = "name")
     private String name;
+    @Column(name = "last_update", columnDefinition = "timestamp")
+    @UpdateTimestamp
+    private LocalDate lastUpdate;
     @ManyToMany
     @JoinTable(
             name = "film_category",
@@ -23,7 +27,4 @@ public class Category {
             inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id")
     )
     private List<Film> films;
-    @Column(name = "last_update")
-    @Basic(fetch = FetchType.EAGER)
-    private Timestamp lastUpdate;
 }

@@ -2,19 +2,20 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 @Data
 @Entity
 @Table(name = "country")
 public class Country {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id")
-    private Integer countryId;
+    private Short countryId;
     @Column(name = "country")
     private String country;
-    @Column(name = "last_update")
+    @Column(name = "last_update", columnDefinition = "timestamp")
+    @UpdateTimestamp
     private Timestamp lastUpdate;
 }

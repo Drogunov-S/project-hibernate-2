@@ -2,37 +2,35 @@ package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "payment")
 public class Payment {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
-    private Integer id;
-
-    @OneToOne
+    private Short id;
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "staff_id")
     private Staff staff;
-
     @OneToOne
     @JoinColumn(name = "rental_id")
     private Rental rental;
-    
     @Column(name = "amount")
     private BigDecimal amount;
-    
     @Column(name = "payment_date")
-    private Timestamp paymentDate;
-    
+    @CreationTimestamp
+    private LocalDateTime paymentDate;
     @Column(name = "last_update")
-    private Timestamp lastUpdate;
+    @UpdateTimestamp
+    private LocalDateTime lastUpdate;
 }

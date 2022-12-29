@@ -1,12 +1,12 @@
 package com.javarush.drogunov.model.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -16,48 +16,40 @@ public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "staff_id")
-    private Integer id;
-
+    private Byte id;
     @Column(name = "first_name")
     private String firstName;
-
     @Column(name = "last_name")
     private String lastName;
-
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
-
-    @Column(name = "picture")
+    @Lob
+    @Column(name = "picture", columnDefinition = "BLOB")
     private byte[] picture;
-
     @Column(name = "email")
     private String email;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
-
-    @Column(name = "active")
+    @Column(name = "active", columnDefinition = "BIT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean active;
-
+    private Boolean isActive;
     @Column(name = "username")
     private String username;
-
     @Column(name = "password")
     private String password;
-
     @Column(name = "last_update")
+    @UpdateTimestamp
     private Timestamp lastUpdate;
-
+    
     @Override
     public String toString() {
         return "Staff{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", active=" + active +
+                ", active=" + isActive +
                 '}';
     }
 }

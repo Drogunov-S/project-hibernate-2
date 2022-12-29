@@ -6,13 +6,12 @@ public enum Rating {
     PG_13("PG-13"),
     R("R"),
     NC_17("NC-17");
-
-    private String value;
-
+    private final String value;
+    
     Rating(String value) {
         this.value = value;
     }
-
+    
     public static Rating fromCode(String code) {
         for (Rating rating : Rating.values()) {
             if (rating.value.equals(code)) {
@@ -21,7 +20,7 @@ public enum Rating {
         }
         throw new UnsupportedOperationException("The code " + code + "is not supported!");
     }
-
+    
     public String getCode() {
         return value;
     }
